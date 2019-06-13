@@ -1,0 +1,207 @@
+@import "../../style/var";
+@import "../../style/function";
+
+.markdown-output {
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    &.preview {
+        width: 100%;
+        .markdown {
+            margin-top: 2rem;
+            width: 1080px;
+            min-width: 1080px;
+        }
+    }
+
+    .markdown-container {
+        @include scroll;
+        width: 100%;
+        height: calc(100% - 48px);
+        display: flex;
+        justify-content: center;
+
+        .markdown {
+            position: relative;
+            background-color: white;
+            padding: $space-large;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
+            height: fit-content;
+            min-height: 100%;
+
+            & > * {
+                margin-bottom: $space-small;
+                width: 100%;
+                color: $font-color-title;
+                @include font-size-large;
+            }
+
+            h1, h2, h3, h4, h5, h6, strong {
+                font-weight: bold;
+                color: $font-color-title;
+            }
+
+            h1 {
+                font-size: $font-size-title-xxxxl;
+                @media (max-width: $break-md) {
+                    font-size: $font-size-title-xxxl;
+                }
+            }
+
+            h2 {
+                font-size: $font-size-title-xxxl;
+                @media (max-width: $break-md) {
+                    font-size: $font-size-title-xxl;
+                }
+            }
+
+            h3 {
+                font-size: $font-size-title-xxl;
+                @media (max-width: $break-md) {
+                    font-size: $font-size-title-xl;
+                }
+            }
+
+            h4 {
+                font-size: $font-size-title-xl;
+                @media (max-width: $break-md) {
+                    font-size: $font-size-title-l;
+                }
+            }
+
+            h5 {
+                font-size: $font-size-title-l;
+                @media (max-width: $break-md) {
+                    font-size: $font-size-title-m;
+                }
+            }
+
+            h6 {
+                @include font-size-title-m;
+            }
+
+            a {
+                font-style: italic;
+                text-decoration: underline;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            hr {
+                border: 0;
+                border-top: 1px $border-color-dark solid;
+                margin: $space-medium 0;
+            }
+
+            blockquote {
+                padding: $space-small $space-medium;
+                margin-bottom: $space-medium;
+                width: 100%;
+                border-left: 3px solid $background-color-dark;
+
+                p:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            pre {
+                margin-bottom: $space-medium;
+                width: 100%;
+                background-color: $dark-background-color-light;
+                /*background-color: #edf6ff;*/
+                padding: $space-small $space-medium;
+                border-radius: $border-radius-small;
+
+                @include scroll;
+
+                code {
+                    width: 100%;
+                    color: $dark-font-color-primary;
+                }
+            }
+            code {
+                font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
+            }
+
+            ul {
+                padding-left: 2rem;
+                li {
+
+                }
+            }
+            ol {
+                padding-left: 2.5rem;
+            }
+            .table {
+                thead {
+                    tr {
+                        background-color: $background-color-dark;
+                    }
+                }
+                tbody {
+                    tr {
+                        &:nth-child(even) {
+                            background-color: $background-color-medium;
+                        }
+                        td {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .aside {
+            position: relative;
+            margin-top: 2rem;
+            width: 200px;
+        }
+    }
+
+    .markdown-tool {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 48px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        padding-left: $space-small;
+        border-top: $border-medium;
+        i {
+            margin-left: $space-small;
+        }
+    }
+}
+
+.markdown-toc {
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0;
+    .table-of-contents {
+        li {
+            margin: 0.25rem 0.25rem 0.25rem 1rem;
+            list-style: disc;
+        }
+        & > li {
+            margin: 0;
+            list-style: none;
+        }
+        a {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
