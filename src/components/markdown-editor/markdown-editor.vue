@@ -228,7 +228,7 @@
             flex-shrink: 0;
             padding: 0 $space-small;
             border-top: $border-medium;
-            justify-content: start;
+            justify-content: flex-start;
             i {
                 margin-left: $space-small;
             }

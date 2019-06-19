@@ -45,7 +45,7 @@
                     reader = new FileReader();
                 this.fileData = fileData;
                 reader.readAsDataURL(fileData.file);
-                reader.onload = function (e) {
+                reader.onload = function () {
                     that.fileUrl = this.result;
                 }
             },
