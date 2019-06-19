@@ -1,26 +1,26 @@
 export let hotCodeList = {
     ctrlKey: [
-        66,  //加粗文字 ctrl+b
-        187, //标记文字 ctrl+=
-        191, //注释 ctrl+/
-        192, //插入代码 ctrl+`
+        66, //加粗文字 ctrl+b
+        187,//标记文字 ctrl+=
+        191,//注释 ctrl+/
+        192,//插入代码 ctrl+`
 
-        49,// 标题1 ctrl+1
-        50,// 标题2 ctrl+2
-        51,// 标题3 ctrl+3
-        52,// 标题4 ctrl+4
-        53,// 标题5 ctrl+5
-        54,// 标题6 ctrl+6
+        49, // 标题1 ctrl+1
+        50, // 标题2 ctrl+2
+        51, // 标题3 ctrl+3
+        52, // 标题4 ctrl+4
+        53, // 标题5 ctrl+5
+        54, // 标题6 ctrl+6
 
-        54,  // 上角标 ctrl+^（ctrl+shift+6）
-        // 中划线 ctrl+~(ctrl+shift+`)
+        54, // 上角标 ctrl+^（ctrl+shift+6）
+        192,// 中划线 ctrl+~(ctrl+shift+`)
     ],
     tabKey: [
         9 // 缩进 tab
     ],
     commandKey: [
         83,// 保存 command+s
-        90// 撤销 command+z,恢复 command+shift+z
+        90,// 撤销 command+z,恢复 command+shift+z
     ],
 };
 
