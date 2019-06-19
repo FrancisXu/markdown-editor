@@ -1,3 +1,7 @@
+## DEMO
+
+https://francisxu.github.io/markdown-editor/
+
 ## API
 
 ### event
@@ -8,7 +12,9 @@
 uploadImage(fileData, resolve, reject) {},
 
 fileData 图片数据
+
 resolve 成功回调
+
 reject  失败回调
 
 #### upload-markdown 上传图片
