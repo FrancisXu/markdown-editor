@@ -16,6 +16,7 @@ reject  失败回调
 uploadImage(content, resolve, reject) {},
 
 content markdown内容
+
 resolve 成功回调
 
 reject  失败回调
