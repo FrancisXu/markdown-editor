@@ -114,6 +114,8 @@
                     if (e.shiftKey === false && e.keyCode === 83) {
                         this.uploadMarkdown();
                     }
+                } else {
+                    return;
                 }
                 this.nativeValue = undoQueue.current.content;
                 this.$emit("input", this.nativeValue);
@@ -183,8 +185,8 @@
 </script>
 
 <style lang="scss">
-    @import "../../style/var";
-    @import "../../style/function";
+    @import "../../style/common/var";
+    @import "../../style/common/function";
 
     .main-content {
         width: 100%;
@@ -194,7 +196,7 @@
     }
 
     .markdown-input {
-        border-right: $border-medium;
+        border-right: $border--medium;
         position: relative;
         width: 50%;
         height: 100%;
@@ -207,9 +209,9 @@
             @include font-size-large;
             line-height: 150%;
             font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-            color: $font-color-title;
+            color: $font-color--primary--title;
             padding: $space-medium;
-            background-color: $background-color-medium;
+            background-color: $background-color--primary;
             resize: none;
             border: unset;
             word-break: break-all;
@@ -227,7 +229,7 @@
             align-items: center;
             flex-shrink: 0;
             padding: 0 $space-small;
-            border-top: $border-medium;
+            border-top: $border--medium;
             justify-content: flex-start;
             i {
                 margin-left: $space-small;

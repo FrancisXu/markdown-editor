@@ -1,5 +1,5 @@
-@import "../../style/var";
-@import "../../style/function";
+@import "../../style/common/var";
+@import "../../style/common/function";
 
 .markdown-output {
     width: 50%;
@@ -36,47 +36,47 @@
             & > * {
                 margin-bottom: $space-small;
                 width: 100%;
-                color: $font-color-title;
+                color: $font-color--primary--title;
                 @include font-size-large;
             }
 
             h1, h2, h3, h4, h5, h6, strong {
                 font-weight: bold;
-                color: $font-color-title;
+                color: $font-color--primary--title;
             }
 
             h1 {
-                font-size: $font-size-title-xxxxl;
-                @media (max-width: $break-md) {
-                    font-size: $font-size-title-xxxl;
+                font-size: $font-size--xxl + $font-size--increase * 3;
+                @media (max-width: $breakpoints) {
+                    font-size: $font-size--xxl + $font-size--increase * 2;
                 }
             }
 
             h2 {
-                font-size: $font-size-title-xxxl;
-                @media (max-width: $break-md) {
-                    font-size: $font-size-title-xxl;
+                font-size: $font-size--xxl + $font-size--increase * 2;
+                @media (max-width: $breakpoints) {
+                    font-size: $font-size--xxl + $font-size--increase;
                 }
             }
 
             h3 {
-                font-size: $font-size-title-xxl;
-                @media (max-width: $break-md) {
-                    font-size: $font-size-title-xl;
+                font-size: $font-size--xxl + $font-size--increase;
+                @media (max-width: $breakpoints) {
+                    font-size: $font-size--xxl;
                 }
             }
 
             h4 {
-                font-size: $font-size-title-xl;
-                @media (max-width: $break-md) {
-                    font-size: $font-size-title-l;
+                font-size: $font-size--xxl;
+                @media (max-width: $breakpoints) {
+                    font-size: $font-size--xl;
                 }
             }
 
             h5 {
-                font-size: $font-size-title-l;
-                @media (max-width: $break-md) {
-                    font-size: $font-size-title-m;
+                font-size: $font-size--xl;
+                @media (max-width: $breakpoints) {
+                    font-size: $font-size--larger;
                 }
             }
 
@@ -95,7 +95,7 @@
 
             hr {
                 border: 0;
-                border-top: 1px $border-color-dark solid;
+                border-top: 1px $border-color--dark solid;
                 margin: $space-medium 0;
             }
 
@@ -103,7 +103,7 @@
                 padding: $space-small $space-medium;
                 margin-bottom: $space-medium;
                 width: 100%;
-                border-left: 3px solid $background-color-dark;
+                border-left: 3px solid $background-color--primary--dark;
 
                 p:last-child {
                     margin-bottom: 0;
@@ -113,16 +113,16 @@
             pre {
                 margin-bottom: $space-medium;
                 width: 100%;
-                background-color: $dark-background-color-light;
+                background-color: $background-color--dark--light;
                 /*background-color: #edf6ff;*/
                 padding: $space-small $space-medium;
-                border-radius: $border-radius-small;
+                border-radius: $border-radius--small;
 
                 @include scroll;
 
                 code {
                     width: 100%;
-                    color: $dark-font-color-primary;
+                    color: $font-color--dark;
                 }
             }
             code {
@@ -141,13 +141,13 @@
             .table {
                 thead {
                     tr {
-                        background-color: $background-color-dark;
+                        background-color: $background-color--primary--dark;
                     }
                 }
                 tbody {
                     tr {
                         &:nth-child(even) {
-                            background-color: $background-color-medium;
+                            background-color: $background-color--primary;
                         }
                         td {
                             text-align: center;
@@ -175,7 +175,7 @@
         align-items: center;
         flex-shrink: 0;
         padding-left: $space-small;
-        border-top: $border-medium;
+        border-top: $border--medium;
         i {
             margin-left: $space-small;
         }

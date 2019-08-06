@@ -1,11 +1,11 @@
-@import "var";
-@import "function";
+@import "common/var";
+@import "common/function";
 
-$--lg: $break-md;
-$--color-primary: $color-primary;
-$--background-color-base: $background-color-medium;
-$--table-header-background: $background-color-light;
-$--table-header-color: $font-color-primary;
+$--lg: $breakpoints;
+$--color-primary: $color--primary;
+$--background-color-base: $background-color--primary;
+$--table-header-background: $background-color--primary--light;
+$--table-header-color: $font-color--primary;
 
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
@@ -13,4 +13,5 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 @import "reset";
 @import "space";
-@import "font";
+@import "common/flex";
+@import "common/transtion";
