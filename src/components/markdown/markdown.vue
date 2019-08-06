@@ -25,7 +25,6 @@
 </template>
 
 <script>
-    import vueMarkdown from "vue-markdown";
     import {jsRender, cssRender, htmlRender, jsonRender} from "./highlightRender"
 
     export default {
@@ -107,7 +106,7 @@
             }
         },
         components: {
-            "vue-markdown": vueMarkdown
+            // "vue-markdown": vueMarkdown
         },
         watch: {
             "source": {
