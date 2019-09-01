@@ -10,11 +10,9 @@
 
 <script>
     import "./components/markdown-editor";
-    import "./components/markdown";
 
     export default {
         name: 'app',
-        components: {},
         data() {
             return {
                 articleValue: "# h1 Heading\n" +
@@ -189,7 +187,6 @@
         methods: {
             /* eslint-disable */
             uploadImage(fileData, resolve, reject) {
-                console.log(fileData);
                 resolve({
                     imageName: "测试",
                     imageUrl: "https://www.test.com"
@@ -197,7 +194,6 @@
                 reject();
             },
             updateMarkdown(content, resolve, reject) {
-                console.log(content);
                 resolve();
                 reject();
             },
@@ -213,6 +209,5 @@
         position: absolute;
         width: 100%;
         height: 100%;
-
     }
 </style>

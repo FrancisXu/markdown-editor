@@ -1,11 +1,11 @@
 <template>
-    <el-dialog custom-class="dialog_form" title="图片上传"
+    <el-dialog custom-class="dialog_uploadImage" title="图片上传"
                @close="afterClose"
                :close-on-click-modal="false"
                :visible.sync="nativeVisible">
         <div class="dialog-content">
             <el-upload :show-file-list="false"
-                       drag action="/api/admin/image/image"
+                       drag action="/api/image/image"
                        :http-request="httpRequest">
                 <div v-show="!fileData">
                     <i class="el-icon-upload"></i>
@@ -45,7 +45,7 @@
                     reader = new FileReader();
                 this.fileData = fileData;
                 reader.readAsDataURL(fileData.file);
-                reader.onload = function () {
+                reader.onload = function (e) {
                     that.fileUrl = this.result;
                 }
             },
@@ -64,7 +64,7 @@
     }
 </script>
 <style lang="scss">
-    .dialog_form {
-        width: 400px !important;
+    .dialog_uploadImage {
+        width: 400px;
     }
 </style>
