@@ -3,6 +3,9 @@ import App from './App.vue'
 import Element from 'element-ui'
 import components from "./components"
 
+import "../index";
+
+
 Vue.use(components)
 Vue.use(Element)
 

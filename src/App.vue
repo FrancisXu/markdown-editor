@@ -9,8 +9,6 @@
 </template>
 
 <script>
-    import "./components/markdown-editor";
-
     export default {
         name: 'app',
         data() {

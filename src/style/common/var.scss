@@ -33,34 +33,10 @@ $color--neutral--10: $color--white;
 
 // region primary color
 
-$color--primary--1: $blue--1;
-$color--primary--2: $blue--2;
-$color--primary--3: $blue--3;
-$color--primary--4: $blue--4;
-$color--primary--5: $blue--5;
-$color--primary--6: $blue--6;
-$color--primary--7: $blue--7;
-$color--primary--8: $blue--8;
-$color--primary--9: $blue--9;
-$color--primary--10: $blue--10;
-
 $color--primary: #1890ff;
 $color--success: #52c41a;
 $color--warning: #faad14;
 $color--danger: #f5222d;
-
-$hover--percent: - 10%;
-$active--percent: - 20%;
-
-$color--primary--active: mix($color--white, $color--primary, 100% + $active--percent) !default;
-$color--success--active: mix($color--white, $color--success, 100% + $active--percent) !default;
-$color--warning--active: mix($color--white, $color--warning, 100% + $active--percent) !default;
-$color--danger--active: mix($color--white, $color--danger, 100% + $active--percent) !default;
-
-$color--primary--hover: mix($color--white, $color--primary, 100% + $hover--percent) !default;
-$color--success--hover: mix($color--white, $color--success, 100% + $hover--percent) !default;
-$color--warning--hover: mix($color--white, $color--warning, 100% + $hover--percent) !default;
-$color--danger--hover: mix($color--white, $color--danger, 100% + $hover--percent) !default;
 
 // endregion
 
@@ -121,51 +97,5 @@ $border--light: 1px solid $color--neutral--8;
 
 //region border-radius
 $border-radius--mini: 3px;
-$border-radius--small: 5px;
-$border-radius--medium: 0.4rem;
-$border-radius--circle: 50%;
 //endregion
-
-//region input
-$input-height--medium: 1.6rem;
-$input-height--small: 1.4rem;
-//endregion
-
-//region button
-
-//endregion
-//region shadow
-$shadow--1: 1px 1px 3px 0 rgba(#000, .12);
-$shadow--1--up: 0 -1px 3px 0 rgba(#000, .12);
-$shadow--1--right: 1px 0 3px 0 rgba(#000, .12);
-$shadow--1--down: 0 1px 3px 0 rgba(#000, .12);
-$shadow--1--left: -1px 0 3px 0 rgba(#000, .12);
-$shadow--2: 2px 2px 4px 0 rgba(#000, .12);
-$shadow--2--up: 0 -2px 4px 0 rgba(#000, .12);
-$shadow--2--right: 2px 0 4px 0 rgba(#000, .12);
-$shadow--2--down: 0 2px 4px 0 rgba(#000, .12);
-$shadow--2--left: -2px 0 4px 0 rgba(#000, .12);
-$shadow--3: 3px 3px 5px 0 rgba(#000, .12);
-$shadow--3--up: 0 -3px 5px 0 rgba(#000, .12);
-$shadow--3--right: 3px 0 5px 0 rgba(#000, .12);
-$shadow--3--down: 0 3px 5px 0 rgba(#000, .12);
-$shadow--3--left: -3px 0 5px 0 rgba(#000, .12);
-//endregion
-
-//region header
-$header--height: 3.2rem;
-//endregion
-
-//region aside
-$aside--width: 12.8rem;
-//endregion
-
-//region main
-$main--height: calc(100% - 3.2rem);
-$main--width: calc(100% - 12.8rem);
-//endregion
-
-$wrapper--width--small: 18rem;
-$wrapper--width--medium: 24rem;
-
 

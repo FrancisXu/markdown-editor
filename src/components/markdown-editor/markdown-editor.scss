@@ -7,18 +7,18 @@
     /* Set height, width, borders, and global font properties here */
     font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
     min-height: 300px;
-    height: 100%;
+    height:calc(100% - 48px) ;
     color: black;
     direction: ltr;
     font-size: 1em;
     line-height: 150%;
 
-    &-scroll {
-        padding: 1em;
+    .CodeMirror-scroll {
+        @include scroll();
     }
 
     &-lines {
-        padding: 4px 0; /* Vertical padding around content */
+        padding: 1em 1em  2em 1em;
     }
 
     pre {

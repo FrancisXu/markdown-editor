@@ -1,16 +1,16 @@
 <template>
     <div class="markdown-editor">
         <div class="markdown-input" v-show="markdownView==='compare'">
-      <textarea placeholder="请输入内容..."
-                :value="nativeValue"
-                class="markdown_input"
-                spellcheck="false">
-      </textarea>
+            <textarea placeholder="请输入内容..."
+                      :value="markdownValue"
+                      class="markdown_input"
+                      spellcheck="false">
+            </textarea>
             <div v-show="toolVisible" class="editor-tool">
                 <i @click="uploadImageVisible = true" class="iconfont icon-image"></i>
             </div>
         </div>
-        <markdown :source="nativeValue"
+        <markdown :source="markdownValue"
                   :view.sync="markdownView">
         </markdown>
         <upload-image @upload-image="uploadImage"
@@ -18,9 +18,7 @@
         </upload-image>
     </div>
 </template>
-
 <script>
-    import uploadImage from "./uploadImage.vue";
     import codeMirror from "codeMirror";
     import 'codeMirror/mode/markdown/markdown';
 
@@ -28,22 +26,40 @@
         data() {
             return {
                 nativeValue: "",
+
+                editorModel: "",
+
                 toolVisible: true,
+
                 fileData: "",
+
                 uploadImageVisible: false,
-                cursorStart: 0,
-                cursorEnd: 0,
+
                 markdownView: "compare",
+
+                startCursor: "",
+                endCursor: "",
             }
         },
         props: {
             value: {},
         },
-        computed: {},
+        computed: {
+            markdownValue: {
+                get() {
+                    return this.nativeValue;
+                },
+                set(value) {
+                    this.nativeValue = value;
+                    this.$emit("input", this.nativeValue);
+                }
+            }
+
+        },
         mounted() {
             let that = this;
 
-            let editor = codeMirror.fromTextArea(document.querySelector("textarea"), {
+            this.editorModel = codeMirror.fromTextArea(document.querySelector("textarea"), {
                 // lineNumbers: true,
                 highlightFormatting: true,
                 maxBlockquoteDepth: true,
@@ -109,13 +125,17 @@
                     "Cmd-S"() {
                         that.uploadMarkdown();
                     },
-                    "Cmd-I"() {
+                    "Cmd-I"(cm) {
                         that.uploadImageVisible = true;
+
+                        that.startCursor = cm.doc.getCursor("start");
+                        that.endCursor = cm.doc.getCursor();
                     },
                 }
             });
-            editor.on("change", function (e) {
-                that.nativeValueChanged(e.getValue());
+
+            this.editorModel.on("change", function (e) {
+                that.markdownValue = e.getValue();
             });
         },
         methods: {
@@ -123,10 +143,13 @@
             uploadMarkdown() {
                 let that = this,
                     promise = new Promise((resolve, reject) => {
-                        that.$emit("upload-markdown", this.nativeValue, resolve, reject);
+                        that.$emit("upload-markdown", this.markdownValue, resolve, reject);
                     });
 
-                promise.then(result => {
+                promise.then(res => {
+                    this.$message.success("保存成功");
+                }).catch(err => {
+                    this.$message.error("保存失败");
                 });
             },
 
@@ -136,40 +159,27 @@
                         that.$emit("upload-image", fileData, resolve, reject);
                     });
 
-                promise.then(result => {
-                    that.uploadImageVisible = false;
-
-                    let imageContent = "![";
-                    imageContent += result.imageName;
-                    imageContent += "](" + result.imageUrl + ")";
-
-                    let startContent = that.nativeValue.substring(0, that.cursorStart),
-                        endContent = that.nativeValue.substring(that.cursorEnd, that.nativeValue.length);
-
-                    that.nativeValueChanged(startContent + "\n" + imageContent + "\n" + endContent)
+                promise.then(res => {
+                    this.uploadImageVisible = false;
+                    this.editorModel.doc.setSelection(this.startCursor, this.endCursor);
+                    this.editorModel.doc.replaceSelection("![" + result.imageName + "](" + result.imageUrl + ")");
+                }).catch(err => {
+                    this.$message.error("图片上传失败");
                 });
             },
-
-            nativeValueChanged(value) {
-                this.nativeValue = value;
-                this.$emit("input", this.nativeValue);
-            }
 
             /* eslint-disable */
         },
         watch: {
             value: {
                 handler(newVal) {
-                    if (this.nativeValue === newVal) {
+                    if (this.markdownValue === newVal) {
                         return;
                     }
-                    this.nativeValue = newVal;
+                    this.markdownValue = newVal;
                 },
                 immediate: true
             },
-        },
-        components: {
-            "upload-image": uploadImage,
         },
     }
 </script>
@@ -195,21 +205,7 @@
         &.preview {
             width: 100%;
         }
-        textarea.markdown_input {
-            @include scroll;
-            @include font-size-large;
-            line-height: 150%;
-            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-            color: $font-color--primary--title;
-            padding: $space-medium;
-            background-color: $background-color--primary;
-            resize: none;
-            border: unset;
-            word-break: break-all;
-            word-wrap: break-word;
-            width: 100%;
-            height: calc(100% - 48px);
-        }
+
         .editor-tool {
             position: absolute;
             bottom: 0;
@@ -240,6 +236,7 @@
         padding: 0 $space-small;
         border-top: $border--medium;
         justify-content: flex-start;
+        z-index: 10;
         i {
             margin-left: $space-small;
         }
